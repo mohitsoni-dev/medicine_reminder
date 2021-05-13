@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:meds_reminder/database/database.dart';
+import 'package:meds_reminder/database/models/Patient.dart';
 
 class PatientAddForm extends StatefulWidget {
   @override
@@ -59,16 +61,12 @@ class _PatientAddFormState extends State<PatientAddForm> {
                   FormBuilderTextField(
                     name: 'condition',
                     style: Theme.of(context).textTheme.bodyText2,
-                    // validator: FormBuilderValidators.compose(
-                    //     [FormBuilderValidators.required(context)]),
                     decoration: InputDecoration(labelText: "Condition"),
                   ),
                   SizedBox(height: 8.0),
                   FormBuilderTextField(
                     name: 'doctor',
                     style: Theme.of(context).textTheme.bodyText2,
-                    // validator: FormBuilderValidators.compose(
-                    //     [FormBuilderValidators.required(context)]),
                     decoration: InputDecoration(labelText: "Name of Doctor"),
                   ),
                 ],
@@ -86,12 +84,18 @@ class _PatientAddFormState extends State<PatientAddForm> {
                     style: TextStyle(color: Colors.white),
                   ),
                   color: Colors.green,
-                  onPressed: () {
+                  onPressed: () async {
                     _fbKey.currentState.save();
                     if (_fbKey.currentState.validate()) {
                       ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(content: Text('Processing Data')));
-                      print(_fbKey.currentState.value);
+                      Patient newPatient = Patient(
+                          name: _fbKey.currentState.value['name'],
+                          age: int.parse(_fbKey.currentState.value['age']),
+                          condition: _fbKey.currentState.value['condition'],
+                          doctor: _fbKey.currentState.value['doctor']);
+                      DatabaseProvider.db.addPatientToDatabase(newPatient);
+                      Navigator.pop(context);
                     }
                   },
                 ),

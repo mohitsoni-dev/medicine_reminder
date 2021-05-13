@@ -14,15 +14,14 @@ class Patient {
   });
 
   factory Patient.fromMap(Map<String, dynamic> json) => new Patient(
-        id: json["id"],
-        name: json["name"],
-        age: json["age"],
-        doctor: json["doctor"],
-        condition: json["condition"],
+        id: json["id"] as int,
+        name: json["name"] as String,
+        age: json["age"] as int,
+        doctor: json["doctor"] as String,
+        condition: json["condition"] as String,
       );
 
   Map<String, dynamic> toMap() => {
-        "id": id,
         "name": name,
         "age": age,
         "doctor": doctor,

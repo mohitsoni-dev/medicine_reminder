@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:meds_reminder/database/database.dart';
+import 'package:meds_reminder/database/models/Patient.dart';
 
 class DrawerClass extends StatefulWidget {
   @override
@@ -7,6 +8,18 @@ class DrawerClass extends StatefulWidget {
 }
 
 class _DrawerClassState extends State<DrawerClass> {
+  List<Patient> allPatients = [];
+
+  @override
+  void initState() {
+    getAllPatients();
+    super.initState();
+  }
+
+  getAllPatients() async {
+    allPatients = await DatabaseProvider.db.getAllPatients();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -20,41 +33,62 @@ class _DrawerClassState extends State<DrawerClass> {
             ),
             child: Text('Drawer Header'),
           ),
-          ListTile(
-            title: Text('Father'),
-            onTap: () {
-              // Update the state of the app.
-              // ...
+          FutureBuilder<List<Patient>>(
+            future: DatabaseProvider.db.getAllPatients(),
+            builder:
+                (BuildContext context, AsyncSnapshot<List<Patient>> snapshot) {
+              if (snapshot.hasData) {
+                return ListView.builder(
+                  shrinkWrap: true,
+                  physics: BouncingScrollPhysics(),
+                  itemCount: snapshot.data.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    Patient patient = snapshot.data[index];
+                    return ListTile(
+                      title: Text(patient.name),
+                      onTap: () {
+                        // Update the state of the app.
+                        // ...
+                      },
+                      trailing: Switch(
+                        value: true,
+                        onChanged: (bool newVal) {},
+                      ),
+                    );
+                  },
+                );
+              } else {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
             },
-            trailing: Switch(
-              value: true,
-              onChanged: (bool newVal) {},
-            ),
-          ),
-          ListTile(
-            title: Text('Grand Mother'),
-            onTap: () {
-              // Update the state of the app.
-              // ...
-            },
-            trailing: Switch(
-              value: true,
-              onChanged: (bool newVal) {},
-            ),
-          ),
-          ListTile(
-            title: Text('Mother'),
-            onTap: () {
-              // Update the state of the app.
-              // ...
-            },
-            trailing: Switch(
-              value: true,
-              onChanged: (bool newVal) {},
-            ),
           ),
         ],
       ),
     );
   }
 }
+// ListTile(
+//             title: Text('Father'),
+//             onTap: () {
+//               // Update the state of the app.
+//               // ...
+//             },
+//             trailing: Switch(
+//               value: true,
+//               onChanged: (bool newVal) {},
+//             ),
+//           ),
+         
+//           ListTile(
+//             title: Text('Mother'),
+//             onTap: () {
+//               // Update the state of the app.
+//               // ...
+//             },
+//             trailing: Switch(
+//               value: true,
+//               onChanged: (bool newVal) {},
+//             ),
+//           ),
