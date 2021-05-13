@@ -14,7 +14,9 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text('Meds Reminder'),
       ),
-      body: Container(),
+      body: Center(
+        child: Text("Upcomming reminders are displayed here"),
+      ),
       drawer: DrawerClass(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {

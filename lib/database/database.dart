@@ -38,6 +38,13 @@ class DatabaseProvider {
     return raw;
   }
 
+  Future<List<Patient>> getAllPatients() async {
+    final db = await database;
+    var response = await db.query("Patient");
+    List<Patient> list = response.map((c) => Patient.fromMap(c)).toList();
+    return list;
+  }
+
   Future<Patient> getPatientWithID(int id) async {
     final db = await database;
     var response = await db.query("Patient", where: "id = ?", whereArgs: [id]);
