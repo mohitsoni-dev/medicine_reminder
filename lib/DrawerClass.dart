@@ -26,8 +26,10 @@ class _DrawerClassState extends State<DrawerClass> {
               // ...
             },
             trailing: Switch(
-              value: true,
-              onChanged: (bool newVal) {},
+              value: false,
+              onChanged: (bool newVal) {
+                newVal = true;
+              },
             ),
           ),
           ListTile(
