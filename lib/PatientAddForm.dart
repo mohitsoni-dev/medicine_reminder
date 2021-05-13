@@ -21,7 +21,20 @@ class _PatientAddFormState extends State<PatientAddForm> {
       appBar: AppBar(
         title: Text('Add Patient'),
       ),
-      body: Container(),
+      body: SafeArea(
+        child: Column(
+          children: [
+            Card(
+              child: Text(
+                  "Patient's Name : ",
+                  style: TextStyle(
+                    fontSize: 18.0,
+                  ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
