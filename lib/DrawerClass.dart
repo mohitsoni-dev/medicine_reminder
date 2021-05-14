@@ -29,9 +29,20 @@ class _DrawerClassState extends State<DrawerClass> {
         children: <Widget>[
           DrawerHeader(
             decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Colors.purple, Colors.indigo],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
               color: Colors.blue,
             ),
-            child: Text('Drawer Header'),
+            child: Text(
+              'All Patient\'s',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 24,
+              ),
+            ),
           ),
           FutureBuilder<List<Patient>>(
             future: DatabaseProvider.db.getAllPatients(),
@@ -80,7 +91,7 @@ class _DrawerClassState extends State<DrawerClass> {
 //               onChanged: (bool newVal) {},
 //             ),
 //           ),
-         
+
 //           ListTile(
 //             title: Text('Mother'),
 //             onTap: () {
