@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:meds_reminder/database/database.dart';
 import 'package:meds_reminder/database/models/Patient.dart';
+import 'package:path/path.dart';
 
 class PatientAddForm extends StatefulWidget {
   @override
@@ -44,35 +45,79 @@ class _PatientAddFormState extends State<PatientAddForm> {
                     style: Theme.of(context).textTheme.bodyText2,
                     validator: FormBuilderValidators.compose(
                         [FormBuilderValidators.required(context)]),
-                    decoration: InputDecoration(labelText: "Full Name"),
+                    decoration: InputDecoration(
+                      labelText: "Full Name",
+                      labelStyle: TextStyle(
+                        shadows: <Shadow>[
+                          Shadow(
+                            offset: Offset(0.5, 0.5),
+                            blurRadius: 1.0,
+                            color: Colors.grey.shade500,
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
-                  SizedBox(height: 8.0),
+                  SizedBox(height: 20.0),
                   FormBuilderTextField(
                     name: "age",
                     style: Theme.of(context).textTheme.bodyText2,
-                    decoration: InputDecoration(labelText: "Age"),
+                    decoration: InputDecoration(
+                      labelText: "Age",
+                      labelStyle: TextStyle(
+                        shadows: <Shadow>[
+                          Shadow(
+                            offset: Offset(0.5, 0.5),
+                            blurRadius: 1.0,
+                            color: Colors.grey.shade500,
+                          ),
+                        ],
+                      ),
+                    ),
                     keyboardType: TextInputType.number,
                     validator: FormBuilderValidators.compose([
                       FormBuilderValidators.numeric(context),
                       FormBuilderValidators.max(context, 110),
                     ]),
                   ),
-                  SizedBox(height: 8.0),
+                  SizedBox(height: 20.0),
                   FormBuilderTextField(
                     name: 'condition',
                     style: Theme.of(context).textTheme.bodyText2,
-                    decoration: InputDecoration(labelText: "Condition"),
+                    decoration: InputDecoration(
+                      labelText: "Condition",
+                      labelStyle: TextStyle(
+                        shadows: <Shadow>[
+                          Shadow(
+                            offset: Offset(0.5, 0.5),
+                            blurRadius: 1.0,
+                            color: Colors.grey.shade500,
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
-                  SizedBox(height: 8.0),
+                  SizedBox(height: 20.0),
                   FormBuilderTextField(
                     name: 'doctor',
                     style: Theme.of(context).textTheme.bodyText2,
-                    decoration: InputDecoration(labelText: "Name of Doctor"),
+                    decoration: InputDecoration(
+                      labelText: "Name of Doctor",
+                      labelStyle: TextStyle(
+                        shadows: <Shadow>[
+                          Shadow(
+                            offset: Offset(0.5, 0.5),
+                            blurRadius: 1.0,
+                            color: Colors.grey.shade500,
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                 ],
               ),
             ),
-            SizedBox(height: 16.0),
+            SizedBox(height: 20.0),
             Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
