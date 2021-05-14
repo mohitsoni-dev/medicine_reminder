@@ -19,7 +19,7 @@ class _MyHomePageState extends State<MyHomePage> {
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
-          children: const <Widget>[
+          children: <Widget>[
             DrawerHeader(
               decoration: BoxDecoration(
                 gradient: LinearGradient(
@@ -37,17 +37,32 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
             ),
-            ListTile(
-              leading: Icon(Icons.more),
-              title: Text('More Details'),
+            FlatButton(
+              onPressed: () {
+                print('More Details button pressed');
+              },
+              child: ListTile(
+                leading: Icon(Icons.more),
+                title: Text('More Details'),
+              ),
             ),
-            ListTile(
-              leading: Icon(Icons.edit),
-              title: Text('Edit Details'),
+            FlatButton(
+              onPressed: () {
+                print('Edit Details Button pressed');
+              },
+              child: ListTile(
+                leading: Icon(Icons.edit),
+                title: Text('Edit Details'),
+              ),
             ),
-            ListTile(
-              leading: Icon(Icons.info_outline),
-              title: Text('About'),
+            FlatButton(
+              onPressed: () {
+                print('About Button pressed');
+              },
+              child: ListTile(
+                leading: Icon(Icons.info_outline),
+                title: Text('About'),
+              ),
             ),
           ],
         ),
