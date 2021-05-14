@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meds_reminder/DrawerClass.dart';
 import 'package:meds_reminder/PatientAddForm.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -16,57 +17,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: Text("Upcoming reminders are displayed here"),
       ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [Colors.purple, Colors.indigo],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                ),
-                color: Colors.blue,
-              ),
-              child: Text(
-                'Patient\'s Name',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                ),
-              ),
-            ),
-            FlatButton(
-              onPressed: () {
-                print('More Details button pressed');
-              },
-              child: ListTile(
-                leading: Icon(Icons.more),
-                title: Text('More Details'),
-              ),
-            ),
-            FlatButton(
-              onPressed: () {
-                print('Edit Details Button pressed');
-              },
-              child: ListTile(
-                leading: Icon(Icons.edit),
-                title: Text('Edit Details'),
-              ),
-            ),
-            FlatButton(
-              onPressed: () {
-                print('About Button pressed');
-              },
-              child: ListTile(
-                leading: Icon(Icons.info_outline),
-                title: Text('About'),
-              ),
-            ),
-          ],
-        ),
-      ),
+      drawer: DrawerClass(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(context,
