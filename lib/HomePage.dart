@@ -15,7 +15,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text('Meds Reminder'),
       ),
       body: Center(
-        child: Text("Upcomming reminders are displayed here"),
+        child: Text("Upcoming reminders are displayed here"),
       ),
       drawer: DrawerClass(),
       floatingActionButton: FloatingActionButton(
