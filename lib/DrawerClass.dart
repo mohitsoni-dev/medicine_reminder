@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meds_reminder/PatientDetails.dart';
 import 'package:meds_reminder/database/database.dart';
 import 'package:meds_reminder/database/models/Patient.dart';
 
@@ -55,12 +56,19 @@ class _DrawerClassState extends State<DrawerClass> {
                   itemCount: snapshot.data.length,
                   itemBuilder: (BuildContext context, int index) {
                     Patient patient = snapshot.data[index];
+                    Function onTap = () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => PatientDetails(
+                            patient: patient,
+                          ),
+                        ),
+                      );
+                    };
                     return ListTile(
                       title: Text(patient.name),
-                      onTap: () {
-                        // Update the state of the app.
-                        // ...
-                      },
+                      onTap: onTap,
                       trailing: Switch(
                         value: true,
                         onChanged: (bool newVal) {},
