@@ -56,14 +56,6 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Icon(Icons.add),
       ),
       bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-          boxShadow: <BoxShadow>[
-            BoxShadow(
-              color: Colors.white,
-              blurRadius: 10,
-            ),
-          ],
-        ),
         child: BottomNavigationBar(
           elevation: 10.0,
           items: const <BottomNavigationBarItem>[
