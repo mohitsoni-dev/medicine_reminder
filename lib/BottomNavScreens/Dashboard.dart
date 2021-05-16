@@ -11,6 +11,9 @@ class _DashBoardPageState extends State<DashBoardPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      body: Center(
+        child: Text('Dashboard'),
+      ),
     );
   }
 }

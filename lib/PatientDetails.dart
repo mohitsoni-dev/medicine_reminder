@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meds_reminder/FormScreens/AddMedicineForm.dart';
 import 'package:meds_reminder/constants/TextConstants.dart';
 import 'package:meds_reminder/database/models/Patient.dart';
 import 'package:path/path.dart';
@@ -47,7 +48,12 @@ class _PatientDetailsState extends State<PatientDetails> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Implement add reminder
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => AddMedicineForm(),
+            ),
+          );
         },
         tooltip: 'Add Mdicine Reminder',
         child: Icon(Icons.add),
