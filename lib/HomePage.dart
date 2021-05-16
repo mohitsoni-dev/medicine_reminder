@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:meds_reminder/DrawerClass.dart';
+import 'package:meds_reminder/FilesPage.dart';
+import 'package:meds_reminder/MedicationPage.dart';
 import 'package:meds_reminder/PatientAddForm.dart';
+import 'package:meds_reminder/SettingsPage.dart';
+import 'package:meds_reminder/Dashboard.dart';
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -9,25 +13,11 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'It will display your schedule',
-      style: optionStyle,
-    ),
-    Text(
-      'It will displays your medications',
-      style: optionStyle,
-    ),
-    Text(
-      'It will display your Settings',
-      style: optionStyle,
-    ),
-    Text(
-      'It will display your files',
-      style: optionStyle,
-    )
+  final List<dynamic> screens = [
+    DashBoardPage(),
+    MedicationPage(),
+    SettingsPage(),
+    FilesPage(),
   ];
 
   void _onItemTapped(int index) {
@@ -43,7 +33,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text('Meds Reminder'),
       ),
       body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
+        child: screens[_selectedIndex],
       ),
       drawer: DrawerClass(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -60,8 +50,8 @@ class _MyHomePageState extends State<MyHomePage> {
           elevation: 10.0,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-              icon: Icon(Icons.access_time),
-              label: 'Schedule',
+              icon: Icon(Icons.dashboard),
+              label: 'Dashboard',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.medical_services),
