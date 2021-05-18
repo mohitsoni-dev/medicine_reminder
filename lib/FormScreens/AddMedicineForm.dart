@@ -14,59 +14,50 @@ class _AddMedicineFormState extends State<AddMedicineForm> {
   final _fbKey = GlobalKey<FormBuilderState>();
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("Add Information on your Medication"),
-        ),
-        body: Padding(
-          padding: EdgeInsets.all(10),
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                FormBuilder(
-                  key: _fbKey,
-                  initialValue: {
-                    'date': DateTime.now(),
-                    'accept_terms': false,
-                  },
-                  autovalidateMode: AutovalidateMode.always,
-                  child: Column(
-                    children: [
-                      FormBuilderTextField(
-                        name: 'text',
-                        style: Theme.of(context).textTheme.bodyText1,
-                        validator: FormBuilderValidators.compose(
-                            [FormBuilderValidators.required(context)]),
-                        decoration: InputDecoration(labelText: "Medicine Name"),
-                      ),
-                      FormBuilderTextField(
-                        name: "dosage",
-                        style: Theme.of(context).textTheme.bodyText1,
-                        decoration: InputDecoration(labelText: "Dosage in MG"),
-                        keyboardType: TextInputType.number,
-                        validator: FormBuilderValidators.compose([
-                          FormBuilderValidators.numeric(context),
-                          FormBuilderValidators.max(context, 70),
-                        ]),
-                      ),
-                      FormBuilderSegmentedControl(
-                        decoration: InputDecoration(
-                          labelText: "Priscription per day",
-                          labelStyle: Theme.of(context).textTheme.bodyText1,
+    return GestureDetector(
+      onTap: (){
+        FocusScopeNode currentFocus = FocusScope.of(context); if (!currentFocus.hasPrimaryFocus) { currentFocus.unfocus(); }
+      },
+      child: MaterialApp(
+        home: Scaffold(
+          appBar: AppBar(
+            title: Text("Add Information on your Medication"),
+          ),
+          body: Padding(
+            padding: EdgeInsets.all(10),
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  FormBuilder(
+                    key: _fbKey,
+                    initialValue: {
+                      'date': DateTime.now(),
+                      'accept_terms': false,
+                    },
+                    autovalidateMode: AutovalidateMode.always,
+                    child: Column(
+                      children: [
+                        FormBuilderTextField(
+                          name: 'text',
+                          style: Theme.of(context).textTheme.bodyText1,
+                          validator: FormBuilderValidators.compose(
+                              [FormBuilderValidators.required(context)]),
+                          decoration: InputDecoration(labelText: "Medicine Name"),
                         ),
-                        name: "movie_rating",
-                        options: List.generate(8, (i) => i + 1)
-                            .map((number) =>
-                                FormBuilderFieldOption(value: number))
-                            .toList(),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: FormBuilderChoiceChip(
-                          name: 'medtype',
+                        FormBuilderTextField(
+                          name: "dosage",
+                          style: Theme.of(context).textTheme.bodyText1,
+                          decoration: InputDecoration(labelText: "Dosage in MG"),
+                          keyboardType: TextInputType.number,
+                          validator: FormBuilderValidators.compose([
+                            FormBuilderValidators.numeric(context),
+                            FormBuilderValidators.max(context, 70),
+                          ]),
+                        ),
+                        FormBuilderSegmentedControl(
                           decoration: InputDecoration(
-                            labelText: 'Select type of Medication',
+                            labelText: "Priscription per day",
+                            labelStyle: Theme.of(context).textTheme.bodyText1,
                           ),
                           options: [
                             FormBuilderFieldOption(
@@ -132,36 +123,37 @@ class _AddMedicineFormState extends State<AddMedicineForm> {
                     ],
                   ),
                 ),
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    MaterialButton(
-                      child: Text(
-                        "Submit",
-                        style: TextStyle(color: Colors.white),
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      MaterialButton(
+                        child: Text(
+                          "Submit",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        color: Colors.green,
+                        onPressed: () {
+                          _fbKey.currentState.save();
+                          if (_fbKey.currentState.validate()) {
+                            print(_fbKey.currentState.value);
+                          }
+                        },
                       ),
-                      color: Colors.green,
-                      onPressed: () {
-                        _fbKey.currentState.save();
-                        if (_fbKey.currentState.validate()) {
-                          print(_fbKey.currentState.value);
-                        }
-                      },
-                    ),
-                    MaterialButton(
-                      child: Text(
-                        "Reset",
-                        style: TextStyle(color: Colors.white),
+                      MaterialButton(
+                        child: Text(
+                          "Reset",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        color: Colors.deepOrange,
+                        onPressed: () {
+                          _fbKey.currentState.reset();
+                        },
                       ),
-                      color: Colors.deepOrange,
-                      onPressed: () {
-                        _fbKey.currentState.reset();
-                      },
-                    ),
-                  ],
-                )
-              ],
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
         ),
