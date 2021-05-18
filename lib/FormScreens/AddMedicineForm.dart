@@ -59,82 +59,70 @@ class _AddMedicineFormState extends State<AddMedicineForm> {
                             labelText: "Priscription per day",
                             labelStyle: Theme.of(context).textTheme.bodyText1,
                           ),
-                          name: "movie_rating",
-                          options: List.generate(8, (i) => i + 1)
-                              .map((number) =>
-                                  FormBuilderFieldOption(value: number))
-                              .toList(),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: FormBuilderChoiceChip(
-                            name: 'medtype',
-                            decoration: InputDecoration(
-                              labelText: 'Select type of Medication',
+                          options: [
+                            FormBuilderFieldOption(
+                              value: 'pill',
+                              child: Container(
+                                width: 50,
+                                height: 25,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    // TODO:// Add Icons Here!!
+                                    // Icon(Icons.medication_outlined),
+                                    Text(
+                                      'Pill',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                    )
+                                  ],
+                                ),
+                              ),
                             ),
-                            options: [
-                              FormBuilderFieldOption(
-                                value: 'pill',
-                                child: Container(
-                                  width: 50,
-                                  height: 25,
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Icon(Icons.medication_outlined),
-                                      Text(
-                                        "Pill",
-                                        style:
-                                            TextStyle(fontWeight: FontWeight.bold),
-                                      )
-                                    ],
-                                  ),
+                            FormBuilderFieldOption(
+                              value: 'syrup',
+                              child: Container(
+                                width: 80,
+                                height: 25,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    // TODO:// Add Icons Here!!
+                                    //Icon(Icons.local_drink_outlined),
+                                    Text(
+                                      "Syrup",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                    )
+                                  ],
                                 ),
                               ),
-                              FormBuilderFieldOption(
-                                value: 'syrup',
-                                child: Container(
-                                  width: 80,
-                                  height: 25,
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Icon(Icons.local_drink_outlined),
-                                      Text(
-                                        "Syrup",
-                                        style:
-                                            TextStyle(fontWeight: FontWeight.bold),
-                                      )
-                                    ],
-                                  ),
+                            ),
+                            FormBuilderFieldOption(
+                              value: 'injection',
+                              child: Container(
+                                width: 100,
+                                height: 25,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    // TODO:// Add Icons Here!!
+                                    //Icon(Icons.mode_edit_outline_outlined),
+                                    Text(
+                                      "Injection",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                    )
+                                  ],
                                 ),
                               ),
-                              FormBuilderFieldOption(
-                                  value: 'injection',
-                                  child: Container(
-                                    width: 100,
-                                    height: 25,
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      children: [
-                                        Icon(
-                                            Icons.mode_edit_outline_outlined
-                                        ),
-                                        Text(
-                                          "Injection",
-                                          style:
-                                          TextStyle(fontWeight: FontWeight.bold),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                              ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
+                ),
                   Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
