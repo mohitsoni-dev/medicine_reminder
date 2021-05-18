@@ -77,11 +77,12 @@ class _AddMedicineFormState extends State<AddMedicineForm> {
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    Icon(Icons.medication_outlined),
+                                    // TODO:// Add Icons Here!!
+                                    // Icon(Icons.medication_outlined),
                                     Text(
-                                      "Pill",
-                                      style:
-                                          TextStyle(fontWeight: FontWeight.bold),
+                                      'Pill',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
                                     )
                                   ],
                                 ),
@@ -95,35 +96,35 @@ class _AddMedicineFormState extends State<AddMedicineForm> {
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    Icon(Icons.local_drink_outlined),
+                                    // TODO:// Add Icons Here!!
+                                    //Icon(Icons.local_drink_outlined),
                                     Text(
                                       "Syrup",
-                                      style:
-                                          TextStyle(fontWeight: FontWeight.bold),
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
                                     )
                                   ],
                                 ),
                               ),
                             ),
                             FormBuilderFieldOption(
-                                value: 'injection',
-                                child: Container(
-                                  width: 100,
-                                  height: 25,
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Icon(
-                                          Icons.mode_edit_outline_outlined
-                                      ),
-                                      Text(
-                                        "Injection",
-                                        style:
-                                        TextStyle(fontWeight: FontWeight.bold),
-                                      )
-                                    ],
-                                  ),
+                              value: 'injection',
+                              child: Container(
+                                width: 100,
+                                height: 25,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    // TODO:// Add Icons Here!!
+                                    //Icon(Icons.mode_edit_outline_outlined),
+                                    Text(
+                                      "Injection",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                    )
+                                  ],
                                 ),
+                              ),
                             ),
                           ],
                         ),
