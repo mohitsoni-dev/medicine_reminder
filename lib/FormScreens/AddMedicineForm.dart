@@ -119,8 +119,7 @@ class _AddMedicineFormState extends State<AddMedicineForm> {
                             ),
                           ],
                         ),
-                      ),
-                    ],
+                      ],
                   ),
                 ),
                   Row(
